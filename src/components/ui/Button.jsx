@@ -7,11 +7,12 @@ const Button = ({
   backgroundColor = "bg-[#103931]",
   hoverBackgroundColor = "hover:bg-white",
   hoverTextColor = "hover:text-black",
-
   className = "",
+  ...rest
 }) => {
   return (
     <button
+      {...rest}
       className={`
         flex items-center justify-center px-6 py-3 font-bold 
         text-white rounded-full transition-all duration-300 

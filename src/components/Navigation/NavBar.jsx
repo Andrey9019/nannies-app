@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
@@ -8,6 +8,8 @@ import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const location = useLocation();
+
+  const navigate = useNavigate();
 
   const homePages = ["/", "/login", "/register"];
   const isHomePage = homePages.includes(location.pathname);
@@ -27,9 +29,12 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      setUser(null);
+      navigate("/");
       alert("Logged out successfully!");
     } catch (error) {
       console.error("Logout error:", error.message);
+      alert("Logout failed. Try again later.");
     }
   };
 
@@ -52,11 +57,13 @@ const Navbar = () => {
               Nannies
             </Link>
           </li>
-          {/* <li>
-            <Link to="/favorites" className="">
-              Favorites
-            </Link>
-          </li> */}
+          {user && (
+            <li>
+              <Link to="/favorites" className="">
+                Favorites
+              </Link>
+            </li>
+          )}
         </ul>
         <div className="flex gap-2">
           {user ? (
@@ -65,7 +72,9 @@ const Navbar = () => {
                 <div className="flex items-center justify-center text-[#103931] bg-white w-10 h-10 rounded-xl mr-3">
                   <FaUser />
                 </div>
-                <span className="font-bold mr-4">{user.displayName}</span>
+                <span className="font-bold mr-4">
+                  {user.displayName || user.email}
+                </span>
               </div>
               <Button text="Logout" onClick={handleLogout} />
             </div>
