@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import featchNannies from "../../firebase";
 
-import { IoLocationOutline, IoHeartOutline } from "react-icons/io5";
-import { FaStar } from "react-icons/fa6";
 import NanniesListComment from "./NanniesListComment";
+
+import { FaStar } from "react-icons/fa6";
+import { IoLocationOutline } from "react-icons/io5";
+import NanniesListHeartBtn from "./NanniesListHeartBtn";
 
 const NanniesList = () => {
   const [nannies, setNannies] = useState([]);
@@ -71,9 +73,7 @@ const NanniesList = () => {
                     {nanny.price_per_hour}$
                   </span>
                 </p>
-                <button>
-                  <IoHeartOutline className="text-2xl ml-12" />
-                </button>
+                <NanniesListHeartBtn nanny={nanny} />
               </div>
             </div>
 
