@@ -7,7 +7,6 @@ const FavoritesPage = () => {
         <h2 className="text-3xl font-bold text-gray-800 mb-6">
           Your Favorite Nannies
         </h2>
-        {/* Тут буде рендеринг карток з улюбленими няньками */}
       </div>
     </>
   );

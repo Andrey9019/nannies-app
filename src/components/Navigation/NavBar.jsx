@@ -41,7 +41,7 @@ const Navbar = () => {
   return (
     <header
       className={`flex w-screen justify-between items-center text-white px-24 py-5 border-b border-gray-200 ${
-        isHomePage ? "fixed z-10 " : "static bg-[#103931]"
+        isHomePage ? "fixed z-10" : "  static bg-[#103931]"
       }`}
     >
       <p className="text-2xl font-bold">Nanny.Services</p>
