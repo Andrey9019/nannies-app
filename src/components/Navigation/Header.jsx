@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 import Button from "../ui/Button";
 import { FaUser } from "react-icons/fa";
 
-const Navbar = () => {
+const Header = () => {
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -40,28 +40,55 @@ const Navbar = () => {
 
   return (
     <header
-      className={`flex w-screen justify-between items-center text-white px-24 py-5 border-b border-gray-200 ${
-        isHomePage ? "fixed z-10" : "  static bg-[#103931]"
+      className={`flex  justify-between items-center text-white px-24 py-5 border-b border-gray-200 ${
+        isHomePage ? "fixed z-10 w-screen" : "  static bg-[#103931] "
       }`}
     >
       <p className="text-2xl font-bold">Nanny.Services</p>
       <nav className="flex">
         <ul className="flex items-center mr-24 gap-10">
           <li>
-            <Link to="/" className="">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `relative text-white text-lg font-medium ${
+                  isActive
+                    ? "after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-2 after:h-2 after:bg-white after:rounded-full"
+                    : ""
+                }`
+              }
+            >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/nannies" className="">
+            <NavLink
+              to="/nannies"
+              className={({ isActive }) =>
+                `relative text-white text-lg font-medium ${
+                  isActive
+                    ? "after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-2 after:h-2 after:bg-white after:rounded-full"
+                    : ""
+                }`
+              }
+            >
               Nannies
-            </Link>
+            </NavLink>
           </li>
           {user && (
             <li>
-              <Link to="/favorites" className="">
+              <NavLink
+                to="/favorites"
+                className={({ isActive }) =>
+                  `relative text-white text-lg font-medium ${
+                    isActive
+                      ? "after:content-[''] after:absolute after:-bottom-3 after:left-1/2 after:-translate-x-1/2 after:w-2 after:h-2 after:bg-white after:rounded-full"
+                      : ""
+                  }`
+                }
+              >
                 Favorites
-              </Link>
+              </NavLink>
             </li>
           )}
         </ul>
@@ -80,17 +107,17 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <Link to="/login">
+              <NavLink to="/login">
                 <Button
                   className=""
                   text="Log In"
                   border="true"
                   backgroundColor="transparent"
                 />
-              </Link>
-              <Link to="/register">
+              </NavLink>
+              <NavLink to="/register">
                 <Button className="" text="Registration" />
-              </Link>
+              </NavLink>
             </>
           )}
         </div>
@@ -99,4 +126,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

@@ -4,12 +4,12 @@ import NanniesPage from "./page/NanniesPage";
 import FavoritesPage from "./page/FavoritePage";
 import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
-import Navbar from "./components/Navigation/NavBar";
+import Header from "./components/Navigation/Header";
 
 const App = () => {
   return (
     <>
-      <Navbar />
+      <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />

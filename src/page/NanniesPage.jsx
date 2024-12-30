@@ -1,4 +1,4 @@
-import NanniesList from "../components/NanniesList/NanniesList";
+import NanniesList from "../components/Nannies/NanniesList";
 
 const NanniesPage = () => {
   return (
