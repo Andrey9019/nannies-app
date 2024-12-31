@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
+// import HeaderNav from "./HeaderNav";
 import Button from "../ui/Button";
 import { FaUser } from "react-icons/fa";
 
