@@ -50,3 +50,14 @@ button {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+select {
+  appearance: none; /* Прибирає стандартну стрілку */
+  -webkit-appearance: none; /* Для Safari */
+  -moz-appearance: none; /* Для Firefox */
+  background: transparent; /* Робить фон прозорим */
+}
+
+select:focus {
+  outline: none; /* Вимикає рамку при фокусі */
+}
