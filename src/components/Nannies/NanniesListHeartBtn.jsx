@@ -2,16 +2,16 @@
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { useFavorites } from "../Favorite/content/FavoritesContext";
 
-const NanniesListHeartBtn = ({ nanny, nannyId }) => {
+const NanniesListHeartBtn = ({ nanny, nannyId, userId }) => {
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
 
   const isFavorite = favorites.some((fav) => fav.nannyId === nannyId);
 
   const handleToggleFavorite = () => {
     if (isFavorite) {
-      removeFromFavorites(nannyId);
+      removeFromFavorites(nannyId, userId);
     } else {
-      addToFavorites({ ...nanny, nannyId });
+      addToFavorites(userId, { ...nanny, nannyId });
     }
   };
 

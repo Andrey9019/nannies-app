@@ -1,18 +1,28 @@
 import { useState, useEffect } from "react";
 import featchNannies from "../../firebase";
+import { getAuth } from "firebase/auth";
 
 import NanniesCard from "./NanniesCard";
 
 const NanniesList = () => {
+  const auth = getAuth();
+  const userId = auth.currentUser?.uid;
+
   const [nannies, setNannies] = useState([]);
-  console.log(nannies);
   const [visibleCards, setVisibleCards] = useState(3);
 
   useEffect(() => {
     const getData = async () => {
       const nanniesData = await featchNannies();
+
       if (nanniesData) {
-        setNannies(Object.values(nanniesData));
+        const formattedNannies = Object.entries(nanniesData).map(
+          ([key, value]) => ({
+            ...value,
+            nannyId: key,
+          })
+        );
+        setNannies(formattedNannies);
       }
     };
 
@@ -21,8 +31,8 @@ const NanniesList = () => {
 
   return (
     <div className="flex flex-col">
-      {nannies.slice(0, visibleCards).map((nanny, index) => (
-        <NanniesCard nanny={nanny} key={index} />
+      {nannies.slice(0, visibleCards).map((nanny) => (
+        <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
       ))}
       {visibleCards < nannies.length && (
         <button

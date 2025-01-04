@@ -18,8 +18,7 @@ const calcBirthday = (birthday) => {
   return age;
 };
 
-const NanniesCard = ({ nanny, index, nannyId }) => {
-  console.log(nannyId);
+const NanniesCard = ({ nanny, index, userId }) => {
   return (
     <div
       className="flex flex-row bg-white shadow-lg rounded-3xl p-6 mb-8"
@@ -55,7 +54,11 @@ const NanniesCard = ({ nanny, index, nannyId }) => {
                 {nanny.price_per_hour}$
               </span>
             </p>
-            <NanniesListHeartBtn nanny={nanny} nannyId={nannyId} />
+            <NanniesListHeartBtn
+              nanny={nanny}
+              nannyId={nanny.nannyId}
+              userId={userId}
+            />
           </div>
         </div>
 
