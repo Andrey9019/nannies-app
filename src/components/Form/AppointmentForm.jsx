@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "../ui/Button";
-
 import { useState } from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { IoMdClose } from "react-icons/io";
 
 const generateTimeOptions = () => {
   const options = [];
@@ -18,8 +17,8 @@ const generateTimeOptions = () => {
   return options;
 };
 
-const AppointmentForm = ({ onSubmit }) => {
-  const [timePickerFocused, setTimePickerFocused] = useState(false);
+const AppointmentForm = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const validationSchema = Yup.object().shape({
     address: Yup.string().required("Address is required"),
@@ -36,157 +35,178 @@ const AppointmentForm = ({ onSubmit }) => {
     comment: Yup.string(),
   });
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <Formik
-      initialValues={{
-        address: "",
-        phone: "+380",
-        age: "",
-        email: "",
-        parentName: "",
-        meetingTime: "",
-        comment: "",
-      }}
-      validationSchema={validationSchema}
-      onSubmit={(values, { resetForm }) => {
-        onSubmit(values);
-        resetForm();
-      }}
-    >
-      {({ isSubmitting }) => (
-        <Form className="flex flex-col space-y-4">
-          <div className="grid grid-cols-2 gap-x-2 gap-y-4">
-            {/* Address */}
-            <div>
-              <Field
-                name="address"
-                type="text"
-                placeholder="Address"
-                className="border rounded-lg px-4 py-2 w-full"
-              />
-              <ErrorMessage
-                name="address"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+    <div>
+      <Formik
+        initialValues={{
+          address: "",
+          phone: "+380",
+          age: "",
+          email: "",
+          parentName: "",
+          meetingTime: "",
+          comment: "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={(values, { resetForm }) => {
+          console.log("Form values:", values); // Ваша логіка обробки даних
+          resetForm();
+          setIsModalOpen(true); // Відкриваємо модальне вікно
+        }}
+      >
+        {({ isSubmitting }) => (
+          <Form className="flex flex-col space-y-4">
+            <div className="grid grid-cols-2 gap-x-2 gap-y-4">
+              {/* Address */}
+              <div>
+                <Field
+                  name="address"
+                  type="text"
+                  placeholder="Address"
+                  className="border rounded-lg px-4 py-2 w-full"
+                />
+                <ErrorMessage
+                  name="address"
+                  component="div"
+                  className="text-red-500 text-sm"
+                />
+              </div>
 
-            {/* Phone */}
-            <div>
-              <Field
-                name="phone"
-                type="text"
-                placeholder="+380"
-                className="border rounded-lg px-4 py-2 w-full"
-              />
-              <ErrorMessage
-                name="phone"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+              {/* Phone */}
+              <div>
+                <Field
+                  name="phone"
+                  type="text"
+                  placeholder="+380"
+                  className="border rounded-lg px-4 py-2 w-full"
+                />
+                <ErrorMessage
+                  name="phone"
+                  component="div"
+                  className="text-red-500 text-sm"
+                />
+              </div>
 
-            {/* Child's age */}
-            <div>
-              <Field
-                name="age"
-                type="number"
-                placeholder="Child's age"
-                className="border rounded-lg px-4 py-2 w-full"
-              />
-              <ErrorMessage
-                name="age"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+              {/* Child's age */}
+              <div>
+                <Field
+                  name="age"
+                  type="number"
+                  placeholder="Child's age"
+                  className="border rounded-lg px-4 py-2 w-full"
+                />
+                <ErrorMessage
+                  name="age"
+                  component="div"
+                  className="text-red-500 text-sm"
+                />
+              </div>
 
-            {/* Meeting time */}
-            <div className="relative">
-              <Field
-                as="select"
-                name="meetingTime"
-                className={`border rounded-lg px-4 py-2 w-full appearance-none ${
-                  timePickerFocused ? "border-[#103931]" : ""
-                }`}
-                onFocus={() => setTimePickerFocused(true)}
-                onBlur={() => setTimePickerFocused(false)}
-              >
-                <option value="" disabled>
-                  Meeting time
-                </option>
-                {generateTimeOptions().map((time) => (
-                  <option key={time} value={time}>
-                    {time}
+              {/* Meeting time */}
+              <div className="relative">
+                <Field
+                  as="select"
+                  name="meetingTime"
+                  className="border rounded-lg px-4 py-2 w-full appearance-none"
+                >
+                  <option value="" disabled>
+                    Meeting time
                   </option>
-                ))}
-              </Field>
-              <AiOutlineClockCircle
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-                size={20}
+                  {generateTimeOptions().map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </Field>
+                <AiOutlineClockCircle
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                  size={20}
+                />
+                <ErrorMessage
+                  name="meetingTime"
+                  component="div"
+                  className="text-red-500 text-sm mt-1"
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div>
+              <Field
+                name="email"
+                type="email"
+                placeholder="Email"
+                className="border rounded-lg px-4 py-2 w-full"
               />
               <ErrorMessage
-                name="meetingTime"
+                name="email"
                 component="div"
-                className="text-red-500 text-sm mt-1"
+                className="text-red-500 text-sm"
               />
             </div>
-          </div>
 
-          {/* Email */}
-          <div>
-            <Field
-              name="email"
-              type="email"
-              placeholder="Email"
-              className="border rounded-lg px-4 py-2 w-full"
-            />
-            <ErrorMessage
-              name="email"
-              component="div"
-              className="text-red-500 text-sm"
-            />
-          </div>
+            {/* Parent's name */}
+            <div>
+              <Field
+                name="parentName"
+                type="text"
+                placeholder="Father's or mother's name"
+                className="border rounded-lg px-4 py-2 w-full"
+              />
+              <ErrorMessage
+                name="parentName"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </div>
 
-          {/* Parent's name */}
-          <div>
-            <Field
-              name="parentName"
-              type="text"
-              placeholder="Father's or mother's name"
-              className="border rounded-lg px-4 py-2 w-full"
-            />
-            <ErrorMessage
-              name="parentName"
-              component="div"
-              className="text-red-500 text-sm"
-            />
-          </div>
+            {/* Comment */}
+            <div>
+              <Field
+                as="textarea"
+                name="comment"
+                placeholder="Comment"
+                className="border rounded-lg px-4 py-2 min-h-12 max-h-28 w-full"
+              />
+              <ErrorMessage
+                name="comment"
+                component="div"
+                className="text-red-500 text-sm"
+              />
+            </div>
 
-          {/* Comment */}
-          <div>
-            <Field
-              as="textarea"
-              name="comment"
-              placeholder="Comment"
-              className="border rounded-lg px-4 py-2 min-h-12 max-h-28 w-full"
+            <Button
+              type="submit"
+              className="hover:bg-[#10393133]"
+              disabled={isSubmitting}
+              text="Send"
             />
-            <ErrorMessage
-              name="comment"
-              component="div"
-              className="text-red-500 text-sm"
-            />
-          </div>
+          </Form>
+        )}
+      </Formik>
 
-          <Button
-            type="submit"
-            className="hover:bg-[#10393133]"
-            disabled={isSubmitting}
-            text="Send"
-          ></Button>
-        </Form>
+      {/* Модальне вікно */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative">
+            <button
+              className="absolute top-3 right-3 text-gray-500 hover:text-black"
+              onClick={closeModal}
+            >
+              <IoMdClose className="w-6 h-6" />
+            </button>
+            <h2 className="text-lg font-semibold mb-4">Thank you!</h2>
+            <p className="text-gray-600 mb-4">
+              Please wait for your meeting confirmation.
+            </p>
+          </div>
+        </div>
       )}
-    </Formik>
+    </div>
   );
 };
 
