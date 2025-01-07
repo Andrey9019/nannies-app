@@ -12,6 +12,13 @@ body {
   /* overflow-y: scroll; */
 }
 
+/* Глобальний стиль для врахування відступів */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2,
 h3,
