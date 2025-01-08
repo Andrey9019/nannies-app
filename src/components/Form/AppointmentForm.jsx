@@ -53,13 +53,13 @@ const AppointmentForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log("Form values:", values); // Ваша логіка обробки даних
+          console.log("Form values:", values);
           resetForm();
-          setIsModalOpen(true); // Відкриваємо модальне вікно
+          setIsModalOpen(true);
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="flex flex-col space-y-4">
+          <Form className="flex flex-col text-xs md:text-base space-y-3 md:space-y-4">
             <div className="grid grid-cols-2 gap-x-2 gap-y-4">
               {/* Address */}
               <div>
@@ -67,12 +67,12 @@ const AppointmentForm = () => {
                   name="address"
                   type="text"
                   placeholder="Address"
-                  className="border rounded-lg px-4 py-2 w-full"
+                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
                 />
                 <ErrorMessage
                   name="address"
                   component="div"
-                  className="text-red-500 text-sm"
+                  className="text-red-500 text-xs md:text-sm"
                 />
               </div>
 
@@ -82,12 +82,12 @@ const AppointmentForm = () => {
                   name="phone"
                   type="text"
                   placeholder="+380"
-                  className="border rounded-lg px-4 py-2 w-full"
+                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
                 />
                 <ErrorMessage
                   name="phone"
                   component="div"
-                  className="text-red-500 text-sm"
+                  className="text-red-500 text-xs md:text-sm"
                 />
               </div>
 
@@ -97,12 +97,12 @@ const AppointmentForm = () => {
                   name="age"
                   type="number"
                   placeholder="Child's age"
-                  className="border rounded-lg px-4 py-2 w-full"
+                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
                 />
                 <ErrorMessage
                   name="age"
                   component="div"
-                  className="text-red-500 text-sm"
+                  className="text-red-500 text-xs md:text-sm"
                 />
               </div>
 
@@ -111,7 +111,7 @@ const AppointmentForm = () => {
                 <Field
                   as="select"
                   name="meetingTime"
-                  className="border rounded-lg px-4 py-2 w-full appearance-none"
+                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full appearance-none"
                 >
                   <option value="" disabled>
                     Meeting time
@@ -123,13 +123,13 @@ const AppointmentForm = () => {
                   ))}
                 </Field>
                 <AiOutlineClockCircle
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                  className="hidden md:flex absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
                   size={20}
                 />
                 <ErrorMessage
                   name="meetingTime"
                   component="div"
-                  className="text-red-500 text-sm mt-1"
+                  className="text-red-500 text-xs md:text-sm mt-1"
                 />
               </div>
             </div>
@@ -140,12 +140,12 @@ const AppointmentForm = () => {
                 name="email"
                 type="email"
                 placeholder="Email"
-                className="border rounded-lg px-4 py-2 w-full"
+                className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className="text-red-500 text-sm"
+                className="text-red-500 text-xs md:text-sm"
               />
             </div>
 
@@ -155,12 +155,12 @@ const AppointmentForm = () => {
                 name="parentName"
                 type="text"
                 placeholder="Father's or mother's name"
-                className="border rounded-lg px-4 py-2 w-full"
+                className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
               />
               <ErrorMessage
                 name="parentName"
                 component="div"
-                className="text-red-500 text-sm"
+                className="text-red-500 text-xs md:text-sm"
               />
             </div>
 
@@ -170,12 +170,12 @@ const AppointmentForm = () => {
                 as="textarea"
                 name="comment"
                 placeholder="Comment"
-                className="border rounded-lg px-4 py-2 min-h-12 max-h-28 w-full"
+                className="border rounded-lg px-2 py-1 md:px-4 md:py-2 min-h-12 max-h-28 w-full"
               />
               <ErrorMessage
                 name="comment"
                 component="div"
-                className="text-red-500 text-sm"
+                className="text-red-500 text-xs md:text-sm"
               />
             </div>
 

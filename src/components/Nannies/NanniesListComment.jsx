@@ -27,7 +27,7 @@ const NanniesListComment = ({ nanny, index }) => {
         <div className="mt-6">
           {nanny.reviews.map((review, reviewIndex) => (
             <div key={reviewIndex} className="flex items-start space-x-4 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
+              <div className="w-16 h-10 md:w-12 md:h-12 text-sm md:text-base rounded-full bg-gray-300 flex items-center justify-center">
                 {review.reviewer.charAt(0)}
               </div>
               <div>
@@ -42,7 +42,7 @@ const NanniesListComment = ({ nanny, index }) => {
           ))}
           <div>
             <button
-              className=" bg-[#103931] text-white px-10 py-3 rounded-full"
+              className="text-sm md:text-base bg-[#103931] text-white px-10 py-3 rounded-full"
               onClick={handleOpenModal}
             >
               Make an Appointment

@@ -37,8 +37,8 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="text-black auth-form max-h-max max-w-[560px] p-16 bg-white rounded-[30px] shadow-lg ">
-      <h2 className="text-[40px] font-medium mb-5">Registration</h2>
+    <div className="text-black auth-form max-h-max max-w-[560px] p-6 md:p-16 m-6 bg-white rounded-[30px] shadow-lg ">
+      <h2 className="text-3xl md:text-4xl font-medium mb-5">Registration</h2>
       <p className="text-gray-500 mb-10">
         Thank you for your interest in our platform! In order to register, we
         need some information. Please provide us with the following information.

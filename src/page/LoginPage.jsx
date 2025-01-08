@@ -9,8 +9,8 @@ import LoginForm from "../components/Auth/LoginForm";
 const HomePage = () => {
   return (
     <>
-      <section className="flex text-white h-screen">
-        <div className="flex flex-col flex-1 justify-center pl-24 pr-16 bg-[#103931]">
+      <section className="flex text-white h-[calc(100vh-4rem)] md:h-screen">
+        <div className="hidden md:flex flex-col flex-1 justify-center pl-24 pr-16 bg-[#103931]">
           <h1 className="text-7xl font-medium pb-7">
             Make Life Easier for the Family:
           </h1>

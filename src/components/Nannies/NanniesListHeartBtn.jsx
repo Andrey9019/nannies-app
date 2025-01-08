@@ -18,9 +18,9 @@ const NanniesListHeartBtn = ({ nanny, nannyId, userId }) => {
   return (
     <button onClick={handleToggleFavorite}>
       {isFavorite ? (
-        <IoHeartSharp className="text-2xl ml-12 text-red-500" />
+        <IoHeartSharp className="text-2xl md:ml-10 text-red-500" />
       ) : (
-        <IoHeartOutline className="text-2xl ml-12" />
+        <IoHeartOutline className="text-2xl md:ml-10" />
       )}
     </button>
   );

@@ -21,38 +21,39 @@ const calcBirthday = (birthday) => {
 const NanniesCard = ({ nanny, index, userId }) => {
   return (
     <div
-      className="flex flex-row bg-white shadow-lg rounded-3xl p-6 mb-8"
+      className="flex flex-col md:flex-row bg-white shadow-lg rounded-xl lg:rounded-3xl p-3 md:p-6 mb-8"
       key={index}
     >
-      <div className="w-[120px] h-[120px] p-3 rounded-[30px] outline outline-2 outline-pink-200 mr-6 flex-shrink-0">
-        <img
-          className="rounded-[15px] object-cover"
-          src={nanny.avatar_url}
-          alt={nanny.name}
-        />
-      </div>
-
       <div className="flex flex-col flex-1">
-        <div className="flex justify-between items-center mb-4">
-          <div>
-            <p className="text-sm text-gray-400">Nanny</p>
-            <p className="text-2xl font-medium">{nanny.name}</p>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+          <div className="flex mb-4">
+            <div className="w-[100px] h-[100px] md:w-[120px] md:h-[120px] p-2 rounded-[20px] md:p-3 md:rounded-[30px] outline outline-2 outline-pink-200 mr-6 flex-shrink-0">
+              <img
+                className="rounded-[15px] object-cover"
+                src={nanny.avatar_url}
+                alt={nanny.name}
+              />
+            </div>
+            <div>
+              <p className="text-sm text-gray-400">Nanny</p>
+              <p className="text-xl md:text-2xl font-medium">{nanny.name}</p>
+            </div>
           </div>
 
-          <div className="flex items-center space-x-5">
+          <div className="flex flex-wrap xl:flex-nowrap ml-2 mb-auto justify-between items-center gap-2">
             <p className="flex items-center ">
               <IoLocationOutline className="mr-2" />
               {nanny.location}
             </p>
-            <p className="flex items-center ">
-              <FaStar className="mr-1 text-yellow-500" />
-              Rating: {nanny.rating}
-            </p>
-            <p className="">
+            <p>
               Price / 1 hour:{" "}
               <span className="text-green-500 font-medium">
                 {nanny.price_per_hour}$
               </span>
+            </p>
+            <p className="flex items-center">
+              <FaStar className="mr-1 text-yellow-500" />
+              Rating: {nanny.rating}
             </p>
             <NanniesListHeartBtn
               nanny={nanny}
@@ -62,7 +63,7 @@ const NanniesCard = ({ nanny, index, userId }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 mb-6">
+        <div className="flex flex-wrap items-center gap-2 mb-6 ">
           <p className="bg-gray-100 text-gray-600 rounded-full px-4 py-2">
             Age:{" "}
             <span className="text-black underline">

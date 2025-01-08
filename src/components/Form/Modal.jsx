@@ -27,13 +27,13 @@ const Modal = ({ isOpen, onClose, nanny }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div
-        className="bg-white rounded-3xl shadow-lg w-full max-w-[600px] p-16 relative"
+        className="bg-white rounded-3xl shadow-lg w-full max-w-[600px] p-4 md:p-16 m-3 relative"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-4xl font-medium mb-5">
+        <h2 className="text-xl md:text-4xl font-medium mb-2 md:mb-5 w-3/4">
           Make an appointment with a babysitter
         </h2>
-        <p className="text- text-gray-400 mb-10">
+        <p className="text-sm md:text-base text-gray-400 mb-5 md:mb-10">
           Arranging a meeting with a caregiver for your child is the first step
           to creating a safe and comfortable environment. Fill out the form
           below so we can match you with the perfect care partner.
@@ -55,7 +55,7 @@ const Modal = ({ isOpen, onClose, nanny }) => {
           className="absolute top-5 right-5 text-gray-500 hover:text-black"
           onClick={onClose}
         >
-          <IoMdClose className="w-8 h-8" />
+          <IoMdClose className="w-6 h-6 md:w-8 md:h-8" />
         </button>
         <AppointmentForm onSubmit={handleFormSubmit} />
       </div>

@@ -40,11 +40,11 @@ const DesktopHeader = () => {
 
   return (
     <header
-      className={`flex  justify-between items-center text-white px-7 lg:px-24 py-5 border-b border-gray-200 ${
-        isHomePage ? "fixed z-10 w-screen" : "  static bg-[#103931] "
+      className={`flex justify-between items-center text-white px-3 lg:px-24 py-5 border-b border-gray-200 ${
+        isHomePage ? "fixed z-10 w-screen" : "static bg-[#103931] "
       }`}
     >
-      <p className="text-xl lg:text-2xl font-bold">Nanny.Services</p>
+      <p className="text-xl lg:text-2xl font-bold mr-4">Nanny.Services</p>
       <nav className="flex">
         <ul className="flex items-center mr-12 lg:mr-24 gap-5 lg:gap-10">
           <li>
@@ -100,7 +100,9 @@ const DesktopHeader = () => {
                   <FaUser />
                 </div>
                 <span className="font-bold mr-4">
-                  {user.displayName || user.email}
+                  {user.displayName && user.displayName.length > 12
+                    ? `${user.displayName.slice(0, 10)}...`
+                    : user.displayName}
                 </span>
               </div>
               <Button text="Logout" onClick={handleLogout} />
