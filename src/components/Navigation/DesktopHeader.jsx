@@ -41,7 +41,7 @@ const DesktopHeader = () => {
   return (
     <header
       className={`flex justify-between items-center text-white px-3 lg:px-24 py-5 border-b border-gray-200 ${
-        isHomePage ? "fixed z-10 w-screen" : "static bg-[#103931] "
+        isHomePage ? "fixed z-10 w-screen" : "static bg-[--prime] "
       }`}
     >
       <p className="text-xl lg:text-2xl font-bold mr-4">Nanny.Services</p>
@@ -96,7 +96,7 @@ const DesktopHeader = () => {
           {user ? (
             <div className="flex">
               <div className="flex items-center mr-6">
-                <div className="flex items-center justify-center text-[#103931] bg-white w-10 h-10 rounded-xl mr-3">
+                <div className="flex items-center justify-center text-[--prime] bg-white w-10 h-10 rounded-xl mr-3">
                   <FaUser />
                 </div>
                 <span className="font-bold mr-4">

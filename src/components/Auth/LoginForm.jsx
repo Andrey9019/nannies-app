@@ -7,6 +7,7 @@ import { auth } from "../../firebase";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import Button from "../ui/Button";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -84,13 +85,12 @@ const LoginForm = () => {
               />
             </div>
 
-            <button
+            <Button
+              text={"Log In"}
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 bg-green-900 text-white text-lg font-medium rounded-[12px] hover:bg-green-700 transition-all duration-300"
-            >
-              Log In
-            </button>
+              className="w-full text-lg font-medium"
+            ></Button>
           </Form>
         )}
       </Formik>

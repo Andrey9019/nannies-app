@@ -181,7 +181,7 @@ const AppointmentForm = () => {
 
             <Button
               type="submit"
-              className="hover:bg-[#10393133]"
+              className="hover:bg-[--hover-prime]"
               disabled={isSubmitting}
               text="Send"
             />

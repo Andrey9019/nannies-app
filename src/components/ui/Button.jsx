@@ -4,8 +4,8 @@ const Button = ({
   text,
   icon = null,
   border = "false",
-  backgroundColor = "bg-[#103931]",
-  hoverBackgroundColor = "hover:bg-white",
+  backgroundColor = "bg-[--prime]",
+  hoverBackgroundColor = "hover:bg-[--hover-prime]",
   hoverTextColor = "hover:text-black",
   className = "",
   ...rest

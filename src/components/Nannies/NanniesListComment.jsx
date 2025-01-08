@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa6";
 import Modal from "../Form/Modal";
+import Button from "../ui/Button";
 
 const NanniesListComment = ({ nanny, index }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,12 +42,11 @@ const NanniesListComment = ({ nanny, index }) => {
             </div>
           ))}
           <div>
-            <button
-              className="text-sm md:text-base bg-[#103931] text-white px-10 py-3 rounded-full"
+            <Button
+              text={"Make an Appointment"}
+              className="text-sm md:text-base"
               onClick={handleOpenModal}
-            >
-              Make an Appointment
-            </button>
+            ></Button>
 
             <Modal
               nanny={nanny}

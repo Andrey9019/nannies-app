@@ -3,6 +3,7 @@ import { getAuth } from "firebase/auth";
 
 import { useFavorites } from "../Favorite/content/FavoritesContext";
 import NanniesCard from "../Nannies/NanniesCard";
+import Button from "../ui/Button";
 
 const Favorite = () => {
   const auth = getAuth();
@@ -33,12 +34,11 @@ const Favorite = () => {
         <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
       ))}
       {visibleCards < favorites.length && (
-        <button
+        <Button
+          text={"Load more"}
           onClick={() => setVisibleCards(visibleCards + 3)}
-          className="mx-auto mt-16 mb-24 bg-[#103931] text-white px-10 py-3 rounded-full"
-        >
-          Load more
-        </button>
+          className="mx-auto mt-16 mb-24 "
+        ></Button>
       )}
     </div>
   );

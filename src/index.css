@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --prime: #103931; /* основний колір сайту */
+  --hover-prime: #10393133; /* основний колір сайту при hover */
+}
+
 html,
 body {
   font-family: "Helvetica Neue";

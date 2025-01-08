@@ -3,6 +3,7 @@ import featchNannies from "../../firebase";
 import { getAuth } from "firebase/auth";
 
 import NanniesCard from "./NanniesCard";
+import Button from "../ui/Button";
 
 const NanniesList = () => {
   const auth = getAuth();
@@ -35,12 +36,11 @@ const NanniesList = () => {
         <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
       ))}
       {visibleCards < nannies.length && (
-        <button
+        <Button
+          text={"Load more"}
           onClick={() => setVisibleCards(visibleCards + 3)}
-          className="mx-auto mt-16 mb-24 bg-[#103931] text-white px-10 py-3 rounded-full"
-        >
-          Load more
-        </button>
+          className="mx-auto mt-16 mb-24 "
+        ></Button>
       )}
     </div>
   );

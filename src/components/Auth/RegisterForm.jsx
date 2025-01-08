@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import Button from "../ui/Button";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -103,13 +104,12 @@ const RegisterForm = () => {
               />
             </div>
 
-            <button
+            <Button
+              text={"Sign Up"}
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 bg-green-900 text-white text-lg font-medium rounded-[12px] hover:bg-green-700 transition-all duration-300"
-            >
-              Sign Up
-            </button>
+              className="w-full text-lg font-medium"
+            ></Button>
           </Form>
         )}
       </Formik>

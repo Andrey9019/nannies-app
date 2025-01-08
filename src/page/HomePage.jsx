@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <>
       <section className="flex flex-col md:flex-row text-white h-[calc(100vh-4rem)] md:h-screen">
-        <div className="flex flex-col flex-1 justify-center px-5 md:pl-7 bg-[#103931] xl:pl-24 xl:pr-16">
+        <div className="flex flex-col flex-1 justify-center px-5 md:pl-7 bg-[--prime] xl:pl-24 xl:pr-16">
           <h1 className="text-4xl font-medium pb-3 md:pb-7 md:text-5xl xl:text-7xl">
             Make Life Easier for the Family:
           </h1>
@@ -27,7 +27,7 @@ const HomePage = () => {
         </div>
         <div className=" relative flex-1 home-bg-img ">
           <div className="absolute flex justify-center items-center bg-white h-16 w-48 bottom-12 right-12 rounded-2xl md:h-24 md:w-64">
-            <div className="flex w-9 h-9 mr-4 justify-center items-center rounded-xl bg-[#103931] md:w-12 md:h-12">
+            <div className="flex w-9 h-9 mr-4 justify-center items-center rounded-xl bg-[--prime] md:w-12 md:h-12">
               <FaCheck />
             </div>
             <div>
