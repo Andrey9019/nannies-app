@@ -6,6 +6,8 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import Button from "../ui/Button";
 import { FaUser } from "react-icons/fa";
 
+import Swal from "sweetalert2";
+
 const DesktopHeader = () => {
   const location = useLocation();
 
@@ -31,10 +33,20 @@ const DesktopHeader = () => {
       await signOut(auth);
       setUser(null);
       navigate("/");
-      alert("Logged out successfully!");
+      Swal.fire({
+        title: "Logout successful!",
+        text: "You have been logged out.",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
     } catch (error) {
+      Swal.fire({
+        title: "Logout failed!",
+        text: "Try again later.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
       console.error("Logout error:", error.message);
-      alert("Logout failed. Try again later.");
     }
   };
 

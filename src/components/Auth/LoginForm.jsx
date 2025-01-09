@@ -9,6 +9,8 @@ import * as Yup from "yup";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Button from "../ui/Button";
 
+import Swal from "sweetalert2";
+
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -24,11 +26,20 @@ const LoginForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
-      alert("Logged in successfully!");
+      Swal.fire({
+        title: "Logged in successfully!",
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
       resetForm();
       navigate("/nannies");
     } catch (error) {
-      alert(`Login failed: ${error.message}`);
+      Swal.fire({
+        title: `Login failed: `,
+        text: `Incorrect login or password ${error.message}`,
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
 
