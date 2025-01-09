@@ -14,9 +14,12 @@ const Favorite = () => {
 
   if (isLoading) {
     return (
-      <p className="text-center text-gray-500 mt-10">
-        Loading your favorites...
-      </p>
+      <div className="flex flex-col items-center">
+        <p className="text-center text-gray-500 mt-10 mb-5">
+          Loading your favorites...
+        </p>
+        <span className="text-center loader"></span>
+      </div>
     );
   }
 
