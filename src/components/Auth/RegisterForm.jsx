@@ -93,24 +93,26 @@ const RegisterForm = () => {
               />
             </div>
 
-            <div className="relative mb-8">
-              <Field
-                name="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                className="w-full px-4 py-3 text-lg border border-gray-300 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-green-700"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500"
-              >
-                {showPassword ? (
-                  <FaRegEyeSlash size={24} />
-                ) : (
-                  <FaRegEye size={24} />
-                )}
-              </button>
+            <div className=" mb-8">
+              <div className="relative">
+                <Field
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  className="w-full px-4 py-3 text-lg border border-gray-300 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-green-700"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-4 transform -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? (
+                    <FaRegEyeSlash size={24} />
+                  ) : (
+                    <FaRegEye size={24} />
+                  )}
+                </button>
+              </div>
               <ErrorMessage
                 name="password"
                 component="div"
