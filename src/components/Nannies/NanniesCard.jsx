@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import NanniesListHeartBtn from "./NanniesListHeartBtn";
 import NanniesListComment from "./NanniesListComment";
+import Swal from "sweetalert2"; // Якщо використовуєте SweetAlert2
 
 const calcBirthday = (birthday) => {
   const currentDate = new Date();
@@ -19,6 +20,17 @@ const calcBirthday = (birthday) => {
 };
 
 const NanniesCard = ({ nanny, index, userId }) => {
+  const handleFavoriteClick = () => {
+    if (!userId) {
+      // Якщо користувач не авторизований
+      Swal.fire({
+        icon: "warning",
+        title: "You are not logged in!",
+        text: "Please log in to add to favorites.",
+      });
+    }
+  };
+
   return (
     <div
       className="flex flex-col md:flex-row bg-white shadow-lg rounded-xl lg:rounded-3xl p-3 md:p-6 mb-8"
@@ -59,6 +71,7 @@ const NanniesCard = ({ nanny, index, userId }) => {
               nanny={nanny}
               nannyId={nanny.nannyId}
               userId={userId}
+              onClick={handleFavoriteClick}
             />
           </div>
         </div>

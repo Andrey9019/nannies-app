@@ -107,25 +107,27 @@ const AppointmentForm = () => {
               </div>
 
               {/* Meeting time */}
-              <div className="relative">
-                <Field
-                  as="select"
-                  name="meetingTime"
-                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full appearance-none"
-                >
-                  <option value="" disabled>
-                    Meeting time
-                  </option>
-                  {generateTimeOptions().map((time) => (
-                    <option key={time} value={time}>
-                      {time}
+              <div>
+                <div className="relative">
+                  <Field
+                    as="select"
+                    name="meetingTime"
+                    className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full appearance-none"
+                  >
+                    <option value="" disabled>
+                      Meeting time
                     </option>
-                  ))}
-                </Field>
-                <AiOutlineClockCircle
-                  className="hidden md:flex absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-                  size={20}
-                />
+                    {generateTimeOptions().map((time) => (
+                      <option key={time} value={time}>
+                        {time}
+                      </option>
+                    ))}
+                  </Field>
+                  <AiOutlineClockCircle
+                    className="hidden md:flex absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                    size={20}
+                  />
+                </div>
                 <ErrorMessage
                   name="meetingTime"
                   component="div"
