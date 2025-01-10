@@ -37,9 +37,10 @@
     <p class="message">You will be redirected shortly...</p>
 
     <script>
-        // Перенаправлення на правильний шлях
-        var redirect = location.pathname.replace('/nannies-app', '');
-        window.location.href = "/nannies-app/" + redirect;
+        // Перенаправлення всіх запитів на index.html
+        if (location.pathname !== '/') {
+            location.replace('/');
+        }
     </script>
 </body>
 

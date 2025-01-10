@@ -4,3 +4,8 @@ publish = "dist"
 
 [dev]
 framework = "vite"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
