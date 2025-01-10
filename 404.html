@@ -4,15 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .message {
+            font-size: 1em;
+            color: #888;
+        }
+    </style>
 </head>
 
 <body>
+    <h1>Oops! Page not found.</h1>
+    <p>The page you're looking for doesn't exist or an error occurred.</p>
+    <p class="message">You will be redirected shortly...</p>
+
     <script>
+        // Перенаправлення на правильний шлях
         var redirect = location.pathname.replace('/nannies-app', '');
         window.location.href = "/nannies-app/" + redirect;
     </script>
-
 </body>
 
 </html>
