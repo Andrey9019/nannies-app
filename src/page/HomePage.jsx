@@ -5,10 +5,12 @@ import Button from "../components/ui/Button";
 
 import { FaCheck } from "react-icons/fa";
 import { GoArrowUpRight } from "react-icons/go";
+import Header from "../components/Navigation/Header";
 
 const HomePage = () => {
   return (
     <>
+      <Header />
       <section className="flex flex-col md:flex-row text-white h-[calc(100vh-4rem)] md:h-screen">
         <div className="flex flex-col flex-1 justify-center px-5 md:pl-7 bg-[--prime] xl:pl-24 xl:pr-16">
           <h1 className="text-4xl font-medium pb-3 md:pb-7 md:text-5xl xl:text-7xl">

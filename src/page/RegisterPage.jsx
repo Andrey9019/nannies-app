@@ -5,10 +5,13 @@ import Button from "../components/ui/Button";
 
 import { GoArrowUpRight } from "react-icons/go";
 import RegisterForm from "../components/Auth/RegisterForm";
+import Header from "../components/Navigation/Header";
 
 const HomePage = () => {
   return (
     <>
+      <Header />
+
       <section className="flex text-white h-[calc(100vh-4rem)] md:h-screen">
         <div className="hidden md:flex flex-col flex-1 justify-center pl-8 pr-5 xl:pl-24 xl:pr-16 bg-[--prime]">
           <h1 className="text-6xl xl:text-7xl font-medium pb-7">
