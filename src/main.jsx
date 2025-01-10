@@ -7,7 +7,7 @@ import FavoritesProvider from "./components/Favorite/content/FavoritesContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/nannies-app/">
       <FavoritesProvider>
         <App />
       </FavoritesProvider>
