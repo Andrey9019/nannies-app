@@ -1,1 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg width="800px" height="800px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione" preserveAspectRatio="xMidYMid meet">
+<path d="M57 27C57 10 45 2 32 2S7 10 7 27c-3.5 0-5 2.5-5 5s1.5 5 5 5c0 6.7 7 16 25 16s25-9.3 25-16c3.5 0 5-2.5 5-5s-1.5-5-5-5" fill="#fed0ac">
+</path>
+<path d="M33 15c-4-3-2-7-2-7s8 5 15 3c0 0-4-1-5-4c0 0 4 1 7 0c-4-3-9-5-16-5S20 4 16 7c4 5 8 8 17 8" fill="#dbb471">
+</path>
+<g fill="#ff717f">
+<path d="M56 37.4c-.4-2.4-3.3-3.9-6.6-3.2c-3.3.6-5.7 3.1-5.3 5.5c.4 2.4 3.3 3.9 6.6 3.2c3.2-.7 5.6-3.1 5.3-5.5" opacity=".5">
+</path>
+<path d="M14.6 34.1c-3.2-.6-6.2.9-6.6 3.3c-.4 2.4 2 4.9 5.3 5.5c3.3.6 6.3-.8 6.6-3.2c.4-2.5-2-4.9-5.3-5.6" opacity=".5">
+</path>
+</g>
+<path d="M26 27.5c0 3.6-2.9 6.5-6.5 6.5S13 31.1 13 27.5s2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" fill="#ffffff">
+</path>
+<circle cx="19.5" cy="27.5" r="4.5" fill="#664e27">
+</circle>
+<path d="M21 27.5c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5s1.5.7 1.5 1.5" fill="#231f20">
+</path>
+<path d="M51 27.5c0 3.6-2.9 6.5-6.5 6.5S38 31.1 38 27.5s2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" fill="#ffffff">
+</path>
+<circle cx="44.5" cy="27.5" r="4.5" fill="#664e27">
+</circle>
+<circle cx="44.5" cy="27.5" r="1.5" fill="#231f20">
+</circle>
+<path d="M47 43.8C47 52.1 40.3 56 32 56s-15-3.9-15-12.2c0-8.4 6.8-4.8 15-4.8c8.3 0 15-3.6 15 4.8" fill="#61c2ff">
+</path>
+<ellipse cx="32" cy="47" rx="6" ry="5" fill="#6235a8">
+</ellipse>
+<path d="M32 46c-6.1 0-11-.7-11 5.2c0 6 4.9 10.8 11 10.8s11-4.8 11-10.7c0-6-4.9-5.3-11-5.3m0 12.4c-4.3 0-8.3-2.9-8.3-7.1c0-4.2 4-3.2 8.3-3.2c4.3 0 8.3-1 8.3 3.2s-4 7.1-8.3 7.1" fill="#fbbf67">
+</path>
+<path d="M36 48.8c0 .6-.5 1.2-1.1 1.2h-5.8c-.6 0-1.1-.5-1.1-1.2v-2.7c0-.6.5-1.2 1.1-1.2h5.8c.6 0 1.1.5 1.1 1.2v2.7" fill="#42ade2">
+</path>
+<path d="M32 38c-4.2 0-6.3-3-4.2-3h8.4c2.1 0 0 3-4.2 3" fill="#e0a372">
+</path>
+</svg>
