@@ -30,5 +30,5 @@ Vite – для швидкої розробки.
 
 📸 Скриншоти
 Головна сторінка
-!(https://github.com/Andrey9019/nannies-app/blob/main/public/Nanny-Services-screen-favorite.jpeg)
+./public/Nanny-Services-screen-favorite.jpeg
 Профіль няні
