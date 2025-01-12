@@ -30,5 +30,5 @@ Vite – для швидкої розробки.
 
 📸 Скриншоти
 Головна сторінка
-./public/Nanny-Services-screen-favorite.jpeg
+/public/Nanny-Services-screen-favorite.jpeg
 Профіль няні
