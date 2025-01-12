@@ -27,7 +27,7 @@ const Modal = ({ isOpen, onClose, nanny }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div
-        className="bg-white rounded-3xl shadow-lg w-full max-w-[600px] p-4 md:p-16 m-3 relative"
+        className="bg-white rounded-3xl shadow-lg w-full max-w-[600px] max-h-screen overflow-y-auto p-4 md:p-16 m-3 relative"
         onClick={(e) => e.stopPropagation()}
       >
         <h2 className="text-xl md:text-4xl font-medium mb-2 md:mb-5 w-3/4">
