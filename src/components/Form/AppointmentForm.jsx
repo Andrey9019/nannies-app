@@ -58,17 +58,12 @@ const AppointmentForm = () => {
           setIsModalOpen(true);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ errors, touched, isSubmitting }) => (
           <Form className="flex flex-col text-xs md:text-base space-y-3 md:space-y-4">
             <div className="grid grid-cols-2 gap-x-2 gap-y-4">
               {/* Address */}
               <div>
-                <Field
-                  name="address"
-                  type="text"
-                  placeholder="Address"
-                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
-                />
+                <Field name="address" type="text" placeholder="Address" />
                 <ErrorMessage
                   name="address"
                   component="div"
@@ -112,7 +107,7 @@ const AppointmentForm = () => {
                   <Field
                     as="select"
                     name="meetingTime"
-                    className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full appearance-none"
+                    className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full appearance-none none-select"
                   >
                     <option value="" disabled>
                       Meeting time

@@ -12,6 +12,7 @@ const NanniesList = () => {
   const [nannies, setNannies] = useState([]);
   const [visibleCards, setVisibleCards] = useState(3);
   const [isLoading, setIsLoading] = useState(true);
+  const [filter, setFilter] = useState("default");
 
   useEffect(() => {
     const getData = async () => {
@@ -44,11 +45,53 @@ const NanniesList = () => {
     );
   }
 
+  const filterNannies = () => {
+    switch (filter) {
+      case "prise-asc":
+        return nannies
+          .slice()
+          .sort((a, b) => a.price_per_hour - b.price_per_hour);
+      case "prise-desc":
+        return nannies
+          .slice()
+          .sort((a, b) => b.price_per_hour - a.price_per_hour);
+      case "rating-asc":
+        return nannies.slice().sort((a, b) => b.rating - a.rating);
+      default:
+        return nannies;
+    }
+  };
+
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value);
+  };
+
   return (
     <div className="flex flex-col">
-      {nannies.slice(0, visibleCards).map((nanny) => (
-        <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
-      ))}
+      <div className="flex flex-col mb-8">
+        <label htmlFor="filter" className="mb-2 font-medium text-gray-500">
+          Filters
+        </label>
+        <select
+          id="filter"
+          value={filter}
+          onChange={handleFilterChange}
+          className="block text-lg w-52 px-5 py-4  text-white bg-[--prime] border rounded-2xl shadow-sm "
+        >
+          <option value="rating-asc">Popular</option>
+          <option value="prise-desc">Higher Price</option>
+          <option value="prise-asc">Lower Price</option>
+          <option value="default">Default</option>
+        </select>
+      </div>
+      {filterNannies()
+        .slice(0, visibleCards)
+        .map((nanny) => (
+          <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
+        ))}
+      {/* {nannies.slice(0, visibleCards).map((nanny) => (
+          <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
+      ))} */}
       {visibleCards < nannies.length && (
         <Button
           text={"Load more"}

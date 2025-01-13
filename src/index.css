@@ -63,15 +63,24 @@ button {
   background-repeat: no-repeat;
 }
 
-select {
+.none-select {
   appearance: none; /* Прибирає стандартну стрілку */
   -webkit-appearance: none; /* Для Safari */
   -moz-appearance: none; /* Для Firefox */
   background: transparent; /* Робить фон прозорим */
 }
 
-select:focus {
+.none-select:focus {
   outline: none; /* Вимикає рамку при фокусі */
+}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="white" d="M10 12l-6-6h12z"/></svg>')
+    no-repeat right 1rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
 }
 
 /* loader */

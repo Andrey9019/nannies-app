@@ -19,7 +19,7 @@ const HomePage = () => {
           <p className="text-xl pb-8 md:pb-16 md:text-2xl">
             Find Babysitters Online for All Occasions
           </p>
-          <Link to="/nannies">
+          <Link to="/nannies" className="w-max">
             <Button
               text="Get Started"
               border="true"
