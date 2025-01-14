@@ -23,15 +23,12 @@ const AppointmentForm = () => {
   const validationSchema = Yup.object().shape({
     address: Yup.string().required("Address is required"),
     phone: Yup.string()
-      .matches(/^\+380\d{9}$/, "Invalid phone number (e.g. +380XXXXXXXXX)")
-      .required("Phone is required"),
-    age: Yup.number()
-      .positive("Age must be positive")
-      .integer("Age must be an integer")
-      .required("Child's age is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    parentName: Yup.string().required("Father's or mother's name is required"),
-    meetingTime: Yup.string().required("Meeting time is required"),
+      .matches(/^\d{10}$/)
+      .required(),
+    age: Yup.number().positive().integer().required(),
+    email: Yup.string().email().required(),
+    parentName: Yup.string().required(),
+    meetingTime: Yup.string().required(),
     comment: Yup.string(),
   });
 
@@ -44,7 +41,7 @@ const AppointmentForm = () => {
       <Formik
         initialValues={{
           address: "",
-          phone: "+380",
+          phone: "",
           age: "",
           email: "",
           parentName: "",
@@ -63,26 +60,27 @@ const AppointmentForm = () => {
             <div className="grid grid-cols-2 gap-x-2 gap-y-4">
               {/* Address */}
               <div>
-                <Field name="address" type="text" placeholder="Address" />
-                <ErrorMessage
+                <Field
                   name="address"
-                  component="div"
-                  className="text-red-500 text-xs md:text-sm"
+                  type="text"
+                  placeholder="Address"
+                  className={`border-2 rounded-lg px-2 py-1 md:px-4 md:py-2 w-full ${
+                    errors.address && touched.address ? "border-red-600" : ""
+                  }`}
                 />
               </div>
 
               {/* Phone */}
-              <div>
+              <div className="flex items-center w-full">
+                <span className="text-gray-500 mx-1">+38</span>
                 <Field
                   name="phone"
                   type="text"
-                  placeholder="+380"
-                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
-                />
-                <ErrorMessage
-                  name="phone"
-                  component="div"
-                  className="text-red-500 text-xs md:text-sm"
+                  placeholder="0XXXXXXXXX"
+                  maxLength={10}
+                  className={`border-2 rounded-lg px-1 py-1 md:px-2 md:py-2 w-full ${
+                    errors.phone && touched.phone ? "border-red-600" : ""
+                  }`}
                 />
               </div>
 
@@ -92,41 +90,36 @@ const AppointmentForm = () => {
                   name="age"
                   type="number"
                   placeholder="Child's age"
-                  className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
-                />
-                <ErrorMessage
-                  name="age"
-                  component="div"
-                  className="text-red-500 text-xs md:text-sm"
+                  className={`border-2 rounded-lg px-2 py-1 md:px-4 md:py-2 w-full ${
+                    errors.age && touched.age ? "border-red-600" : ""
+                  }`}
                 />
               </div>
 
               {/* Meeting time */}
-              <div>
-                <div className="relative">
-                  <Field
-                    as="select"
-                    name="meetingTime"
-                    className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full appearance-none none-select"
-                  >
-                    <option value="" disabled>
-                      Meeting time
-                    </option>
-                    {generateTimeOptions().map((time) => (
-                      <option key={time} value={time}>
-                        {time}
-                      </option>
-                    ))}
-                  </Field>
-                  <AiOutlineClockCircle
-                    className="hidden md:flex absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
-                    size={20}
-                  />
-                </div>
-                <ErrorMessage
+
+              <div className="relative">
+                <Field
+                  as="select"
                   name="meetingTime"
-                  component="div"
-                  className="text-red-500 text-xs md:text-sm mt-1"
+                  className={`border-2 rounded-lg px-2 py-1 md:px-4 md:py-2 w-full ${
+                    errors.meetingTime && touched.meetingTime
+                      ? "border-red-600"
+                      : ""
+                  }`}
+                >
+                  <option value="" disabled>
+                    Meeting time
+                  </option>
+                  {generateTimeOptions().map((time) => (
+                    <option key={time} value={time}>
+                      {time}
+                    </option>
+                  ))}
+                </Field>
+                <AiOutlineClockCircle
+                  className="hidden md:flex absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                  size={20}
                 />
               </div>
             </div>
@@ -137,12 +130,9 @@ const AppointmentForm = () => {
                 name="email"
                 type="email"
                 placeholder="Email"
-                className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-500 text-xs md:text-sm"
+                className={`border-2 rounded-lg px-2 py-1 md:px-4 md:py-2 w-full ${
+                  errors.email && touched.email ? "border-red-600" : ""
+                }`}
               />
             </div>
 
@@ -152,12 +142,11 @@ const AppointmentForm = () => {
                 name="parentName"
                 type="text"
                 placeholder="Father's or mother's name"
-                className="border rounded-lg px-2 py-1 md:px-4 md:py-2 w-full"
-              />
-              <ErrorMessage
-                name="parentName"
-                component="div"
-                className="text-red-500 text-xs md:text-sm"
+                className={`border-2 rounded-lg px-2 py-1 md:px-4 md:py-2 w-full ${
+                  errors.parentName && touched.parentName
+                    ? "border-red-600"
+                    : ""
+                }`}
               />
             </div>
 
