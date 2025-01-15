@@ -67,7 +67,7 @@ button {
   appearance: none; /* Прибирає стандартну стрілку */
   -webkit-appearance: none; /* Для Safari */
   -moz-appearance: none; /* Для Firefox */
-  background: transparent; /* Робить фон прозорим */
+  /* background: transparent; Робить фон прозорим */
 }
 
 .none-select:focus {
