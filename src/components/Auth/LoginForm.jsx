@@ -15,10 +15,10 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Email is required"),
+    email: Yup.string().email().required(),
     password: Yup.string()
       .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
+      .required(),
   });
 
   const navigate = useNavigate();
@@ -55,19 +55,16 @@ const LoginForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ errors, touched, isSubmitting }) => (
           <Form>
             <div className="relative mb-6">
               <Field
                 name="email"
                 type="email"
                 placeholder="Email"
-                className="w-full px-4 py-3 text-lg border border-gray-300 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-green-700"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-500 mt-1 text-sm"
+                className={`border-2 rounded-lg px-2 py-1 md:px-4 md:py-2 w-full ${
+                  errors.email && touched.email ? "border-red-600" : ""
+                }`}
               />
             </div>
 
@@ -77,7 +74,9 @@ const LoginForm = () => {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
-                  className="w-full px-4 py-3 text-lg border border-gray-300 rounded-[12px] focus:outline-none focus:ring-2 focus:ring-green-700"
+                  className={`border-2 rounded-lg px-2 py-1 md:px-4 md:py-2 w-full ${
+                    errors.password && touched.password ? "border-red-600" : ""
+                  }`}
                 />
                 <button
                   type="button"

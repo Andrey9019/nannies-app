@@ -49,6 +49,12 @@ button {
   font: inherit;
   cursor: pointer;
 }
+input,
+textarea,
+select,
+button {
+  font-size: 16px;
+}
 
 .home-bg-img {
   background: linear-gradient(

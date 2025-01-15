@@ -4,21 +4,20 @@ import NanniesCard from "./NanniesCard";
 import Button from "../ui/Button";
 
 const NanniesDisplay = ({
-  nannies,
   filterNannies,
   visibleCards,
   setVisibleCards,
   userId,
 }) => {
+  const filteredNannies = filterNannies();
+
   return (
     <div>
-      {filterNannies()
-        .slice(0, visibleCards)
-        .map((nanny) => (
-          <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
-        ))}
+      {filteredNannies.slice(0, visibleCards).map((nanny) => (
+        <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
+      ))}
 
-      {visibleCards < nannies.length && (
+      {visibleCards < filteredNannies.length && (
         <Button
           text={"Load more"}
           onClick={() => setVisibleCards(visibleCards + 3)}
