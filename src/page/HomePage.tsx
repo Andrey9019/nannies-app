@@ -7,7 +7,7 @@ import { FaCheck } from "react-icons/fa";
 import { GoArrowUpRight } from "react-icons/go";
 import Header from "../components/Navigation/Header";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <>
       <Header />
@@ -22,7 +22,8 @@ const HomePage = () => {
           <Link to="/nannies" className="w-max">
             <Button
               text="Get Started"
-              border="true"
+              // border="true"
+              border
               icon={<GoArrowUpRight />}
             />
           </Link>

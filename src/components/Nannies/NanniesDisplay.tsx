@@ -1,9 +1,16 @@
-/* eslint-disable react/prop-types */
-
 import NanniesCard from "./NanniesCard";
 import Button from "../ui/Button";
+import { Nanny } from "../types/interfaces";
 
-const NanniesDisplay = ({
+interface NanniesDisplayProps {
+  nannies: Nanny[];
+  filterNannies: () => any[];
+  visibleCards: number;
+  setVisibleCards: (visibleCards: number) => void;
+  userId: string;
+}
+
+const NanniesDisplay: React.FC<NanniesDisplayProps> = ({
   filterNannies,
   visibleCards,
   setVisibleCards,

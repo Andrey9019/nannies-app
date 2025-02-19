@@ -5,12 +5,12 @@ import { getAuth } from "firebase/auth";
 import NanniesDisplay from "./NanniesDisplay";
 import FilterByAttributes from "../Filter/FilterByAttributes";
 import FilterByCity from "../Filter/FilterByCity";
+import { Nanny } from "../types/interfaces";
 
-const NanniesList = () => {
+const Nannies: React.FC = () => {
   const auth = getAuth();
-  const userId = auth.currentUser?.uid;
 
-  const [nannies, setNannies] = useState([]);
+  const [nannies, setNannies] = useState<Nanny[]>([]);
   const [visibleCards, setVisibleCards] = useState(3);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState("default");
@@ -22,9 +22,9 @@ const NanniesList = () => {
       const nanniesData = await featchNannies();
 
       if (nanniesData) {
-        const formattedNannies = Object.entries(nanniesData).map(
-          ([key, value]) => ({
-            ...value,
+        const formattedNannies: Nanny[] = Object.entries(nanniesData).map(
+          ([key, value]: [string, any]) => ({
+            ...(value as Nanny),
             nannyId: key,
           })
         );
@@ -37,7 +37,7 @@ const NanniesList = () => {
   }, []);
 
   // функція для виділення тільки міста
-  const extractCity = (location) => {
+  const extractCity = (location: string) => {
     return location.split(",")[0].trim(); // Беремо все до коми
   };
 
@@ -47,7 +47,7 @@ const NanniesList = () => {
   ];
 
   // логіка фільтрації
-  const filterNannies = () => {
+  const filterNannies = (): Nanny[] => {
     let filteredNannies = nannies;
 
     if (selectedCity) {
@@ -57,11 +57,11 @@ const NanniesList = () => {
     }
 
     switch (filter) {
-      case "prise-asc":
+      case "price-asc":
         return filteredNannies
           .slice()
           .sort((a, b) => a.price_per_hour - b.price_per_hour);
-      case "prise-desc":
+      case "price-desc":
         return filteredNannies
           .slice()
           .sort((a, b) => b.price_per_hour - a.price_per_hour);
@@ -98,10 +98,10 @@ const NanniesList = () => {
         filterNannies={filterNannies}
         visibleCards={visibleCards}
         setVisibleCards={setVisibleCards}
-        userId={userId}
+        userId={auth.currentUser ? auth.currentUser.uid : ""}
       />
     </div>
   );
 };
 
-export default NanniesList;
+export default Nannies;

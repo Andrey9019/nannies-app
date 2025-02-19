@@ -1,11 +1,11 @@
-/* eslint-disable react/prop-types */
 import { FaStar } from "react-icons/fa6";
 import { IoLocationOutline } from "react-icons/io5";
 import NanniesListHeartBtn from "./NanniesListHeartBtn";
 import NanniesListComment from "./NanniesListComment";
-import Swal from "sweetalert2"; // Якщо використовуєте SweetAlert2
+import { Nanny } from "../types/interfaces";
+import Swal from "sweetalert2";
 
-const calcBirthday = (birthday) => {
+const calcBirthday = (birthday: string) => {
   const currentDate = new Date();
   const birthDate = new Date(birthday);
   let age = currentDate.getFullYear() - birthDate.getFullYear();
@@ -19,7 +19,13 @@ const calcBirthday = (birthday) => {
   return age;
 };
 
-const NanniesCard = ({ nanny, index, userId }) => {
+interface NanniesCardProps {
+  nanny: Nanny;
+  // index: number;
+  userId: string;
+}
+
+const NanniesCard: React.FC<NanniesCardProps> = ({ nanny, userId }) => {
   const handleFavoriteClick = () => {
     if (!userId) {
       // Якщо користувач не авторизований
@@ -34,7 +40,7 @@ const NanniesCard = ({ nanny, index, userId }) => {
   return (
     <div
       className="flex flex-col md:flex-row bg-white shadow-lg rounded-xl lg:rounded-3xl p-3 md:p-6 mb-8"
-      key={index}
+      // key={index}
     >
       <div className="flex flex-col flex-1">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">

@@ -1,8 +1,19 @@
-/* eslint-disable react/prop-types */
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import { useFavorites } from "../Favorite/content/FavoritesContext";
 
-const NanniesListHeartBtn = ({ nanny, nannyId, userId, onClick }) => {
+interface NanniesListHeartBtnProps {
+  nanny: any;
+  nannyId: string;
+  userId: string | null;
+  onClick: () => void;
+}
+
+const NanniesListHeartBtn: React.FC<NanniesListHeartBtnProps> = ({
+  nanny,
+  nannyId,
+  userId,
+  onClick,
+}) => {
   const { favorites, addToFavorites, removeFromFavorites } = useFavorites();
 
   const isFavorite = favorites.some((fav) => fav.nannyId === nannyId);

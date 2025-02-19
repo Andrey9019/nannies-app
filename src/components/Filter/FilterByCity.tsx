@@ -1,9 +1,18 @@
-/* eslint-disable react/prop-types */
-
+import React from "react";
 import { IoIosSearch } from "react-icons/io";
 
-const FilterByCity = ({ uniqueCities, selectedCity, setSelectedCity }) => {
-  const handleCityChange = (event) => {
+interface FilterByCityProps {
+  uniqueCities: string[];
+  selectedCity: string;
+  setSelectedCity: (value: string) => void;
+}
+
+const FilterByCity: React.FC<FilterByCityProps> = ({
+  uniqueCities,
+  selectedCity,
+  setSelectedCity,
+}) => {
+  const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCity(event.target.value);
   };
 

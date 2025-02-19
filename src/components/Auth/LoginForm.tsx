@@ -4,15 +4,20 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import Button from "../ui/Button";
 
 import Swal from "sweetalert2";
+interface LoginFormValues {
+  email: string;
+  password: string;
+}
 
-const LoginForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
+const LoginForm: React.FC = () => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email().required(),
@@ -21,9 +26,10 @@ const LoginForm = () => {
       .required(),
   });
 
-  const navigate = useNavigate();
-
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (
+    values: LoginFormValues,
+    { resetForm }: FormikHelpers<LoginFormValues>
+  ) => {
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
       Swal.fire({
@@ -36,7 +42,7 @@ const LoginForm = () => {
     } catch (error) {
       Swal.fire({
         title: `Login failed: `,
-        text: `Incorrect login or password ${error.message}`,
+        text: (error as Error).message,
         icon: "error",
         confirmButtonText: "OK",
       });

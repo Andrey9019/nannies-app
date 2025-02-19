@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { getAuth, signOut } from "firebase/auth";
+import { getAuth, signOut, User } from "firebase/auth";
 import Button from "../ui/Button";
 import Swal from "sweetalert2";
 
-const MobileHeader = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+const MobileHeader: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const auth = getAuth();
-  const user = auth.currentUser;
+  const user: User | undefined = auth.currentUser || undefined;
 
-  const handleLogout = async () => {
+  const handleLogout = async (): Promise<void> => {
     try {
       await signOut(auth);
       navigate("/");
@@ -24,7 +24,7 @@ const MobileHeader = () => {
         timer: 1500,
       });
     } catch (error) {
-      console.error("Logout error:", error.message);
+      console.error("Logout error:", (error as Error).message);
 
       Swal.fire({
         icon: "error",
@@ -34,9 +34,8 @@ const MobileHeader = () => {
     }
   };
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  const closeMenu = () => setMenuOpen(false);
+  const toggleMenu = (): void => setMenuOpen((prev) => !prev);
+  const closeMenu = (): void => setMenuOpen(false);
 
   return (
     <>

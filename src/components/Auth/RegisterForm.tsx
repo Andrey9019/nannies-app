@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -13,8 +13,15 @@ import Button from "../ui/Button";
 
 import Swal from "sweetalert2";
 
-const RegisterForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
+interface RegisterFormValues {
+  name: string;
+  email: string;
+  password: string;
+}
+
+const RegisterForm: React.FC = () => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required(),
@@ -24,9 +31,10 @@ const RegisterForm = () => {
       .required(),
   });
 
-  const navigate = useNavigate();
-
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit = async (
+    values: RegisterFormValues,
+    { resetForm }: FormikHelpers<RegisterFormValues>
+  ) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -45,7 +53,7 @@ const RegisterForm = () => {
     } catch (error) {
       Swal.fire({
         title: "Registration failed:",
-        text: `${error.message}`,
+        text: (error as Error).message,
         icon: "error",
       });
     }

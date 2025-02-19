@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut, User } from "firebase/auth";
 
 import Button from "../ui/Button";
 import { FaUser } from "react-icons/fa";
 
 import Swal from "sweetalert2";
 
-const DesktopHeader = () => {
+const DesktopHeader: React.FC = () => {
   const location = useLocation();
 
   const navigate = useNavigate();
 
   const homePages = ["/", "/login", "/register"];
-  const isHomePage = homePages.includes(location.pathname);
+  const isHomePage: boolean = homePages.includes(location.pathname);
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   const auth = getAuth();
 
@@ -28,7 +28,7 @@ const DesktopHeader = () => {
     return () => unsubscribe();
   }, [auth]);
 
-  const handleLogout = async () => {
+  const handleLogout = async (): Promise<void> => {
     try {
       await signOut(auth);
       setUser(null);
@@ -46,7 +46,7 @@ const DesktopHeader = () => {
         icon: "error",
         confirmButtonText: "OK",
       });
-      console.error("Logout error:", error.message);
+      console.error("Logout error:", (error as Error).message);
     }
   };
 
@@ -125,7 +125,7 @@ const DesktopHeader = () => {
                 <Button
                   className=""
                   text="Log In"
-                  border="true"
+                  // border
                   backgroundColor="transparent"
                 />
               </NavLink>

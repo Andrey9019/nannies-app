@@ -1,6 +1,17 @@
+import React from "react";
 import PropTypes from "prop-types";
 
-const Button = ({
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  text: string;
+  icon?: React.ReactNode | null;
+  border?: boolean;
+  backgroundColor?: string;
+  hoverBackgroundColor?: string;
+  hoverTextColor?: string;
+  className?: string;
+}
+
+const Button: React.FC<ButtonProps> = ({
   text,
   icon = null,
   border = "false",
@@ -25,16 +36,6 @@ const Button = ({
       {icon && <span className="ml-4">{icon}</span>}
     </button>
   );
-};
-
-Button.propTypes = {
-  text: PropTypes.string.isRequired,
-  icon: PropTypes.node,
-  border: PropTypes.string,
-  className: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  hoverBackgroundColor: PropTypes.string,
-  hoverTextColor: PropTypes.string,
 };
 
 export default Button;

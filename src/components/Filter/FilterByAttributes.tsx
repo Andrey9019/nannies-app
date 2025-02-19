@@ -1,7 +1,15 @@
-/* eslint-disable react/prop-types */
+import React from "react";
 
-const FilterByAttributes = ({ filter, setFilter }) => {
-  const handleFilterChange = (event) => {
+interface FilterByAttributesProps {
+  filter: string;
+  setFilter: (value: string) => void;
+}
+
+const FilterByAttributes: React.FC<FilterByAttributesProps> = ({
+  filter,
+  setFilter,
+}) => {
+  const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);
   };
 
@@ -17,8 +25,8 @@ const FilterByAttributes = ({ filter, setFilter }) => {
         className="block text-base md:text-lg w-36 md:w-52 px-3 py-2 md:px-5 md:py-4  text-white bg-[--prime] border rounded-2xl shadow-sm"
       >
         <option value="rating-asc">Popular</option>
-        <option value="prise-desc">Higher Price</option>
-        <option value="prise-asc">Lower Price</option>
+        <option value="price-desc">Higher Price</option>
+        <option value="price-asc">Lower Price</option>
         <option value="default">Default</option>
       </select>
     </div>

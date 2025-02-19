@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import Button from "../ui/Button";
 import { useState } from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { IoMdClose } from "react-icons/io";
+import ThankYouModal from "./ThankyouModal"; // Імпортуємо новий компонент
 
 const generateTimeOptions = () => {
   const options = [];
@@ -18,7 +18,7 @@ const generateTimeOptions = () => {
 };
 
 const AppointmentForm = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const validationSchema = Yup.object().shape({
     address: Yup.string().required("Address is required"),
@@ -97,7 +97,6 @@ const AppointmentForm = () => {
               </div>
 
               {/* Meeting time */}
-
               <div className="relative">
                 <Field
                   as="select"
@@ -175,23 +174,8 @@ const AppointmentForm = () => {
         )}
       </Formik>
 
-      {/* Модальне вікно */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg relative">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-black"
-              onClick={closeModal}
-            >
-              <IoMdClose className="w-6 h-6" />
-            </button>
-            <h2 className="text-lg font-semibold mb-4">Thank you!</h2>
-            <p className="text-gray-600 mb-4">
-              Please wait for your meeting confirmation.
-            </p>
-          </div>
-        </div>
-      )}
+      {/* Використовуємо новий компонент */}
+      <ThankYouModal isOpen={isModalOpen} closeModal={closeModal} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import Favorite from "../components/Favorite/Favorite";
 import Header from "../components/Navigation/Header";
 
-const FavoritesPage = () => {
+const FavoritesPage: React.FC = () => {
   return (
     <>
       <Header />

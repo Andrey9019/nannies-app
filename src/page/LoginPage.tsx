@@ -7,7 +7,7 @@ import { GoArrowUpRight } from "react-icons/go";
 import LoginForm from "../components/Auth/LoginForm";
 import Header from "../components/Navigation/Header";
 
-const HomePage = () => {
+const LoginPage: React.FC = () => {
   return (
     <>
       <Header />
@@ -23,7 +23,8 @@ const HomePage = () => {
           <Link to="/nannies">
             <Button
               text="Get Started"
-              border="true"
+              // border="true"
+              border
               icon={<GoArrowUpRight />}
             />
           </Link>
@@ -36,4 +37,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default LoginPage;

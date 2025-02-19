@@ -1,21 +1,20 @@
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import AppointmentForm from "./AppointmentForm";
 
 import { IoMdClose } from "react-icons/io";
 
-const Modal = ({ isOpen, onClose, nanny }) => {
-  const [setIsModalOpen] = useState(false);
-
-  const handleCloseModal = () => setIsModalOpen(false);
-
-  const handleFormSubmit = (formData) => {
-    console.log("Form submitted with:", formData);
-    handleCloseModal();
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  nanny: {
+    avatar_url: string;
+    name: string;
   };
+}
 
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, nanny }) => {
   useEffect(() => {
-    const handleEsc = (e) => {
+    const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
     document.addEventListener("keydown", handleEsc);
@@ -57,7 +56,7 @@ const Modal = ({ isOpen, onClose, nanny }) => {
         >
           <IoMdClose className="w-6 h-6 md:w-8 md:h-8" />
         </button>
-        <AppointmentForm onSubmit={handleFormSubmit} />
+        <AppointmentForm />
       </div>
     </div>
   );

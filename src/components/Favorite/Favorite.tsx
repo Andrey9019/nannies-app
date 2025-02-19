@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { getAuth } from "firebase/auth";
 
-import { useFavorites } from "../Favorite/content/FavoritesContext";
+import { useFavorites } from "./content/FavoritesContext";
 import NanniesCard from "../Nannies/NanniesCard";
 import Button from "../ui/Button";
 
-const Favorite = () => {
+const Favorite: React.FC = () => {
   const auth = getAuth();
   const userId = auth.currentUser?.uid;
 
@@ -34,7 +34,11 @@ const Favorite = () => {
   return (
     <div className="flex flex-col">
       {favorites.slice(0, visibleCards).map((nanny) => (
-        <NanniesCard nanny={nanny} key={nanny.nannyId} userId={userId} />
+        <NanniesCard
+          nanny={nanny}
+          key={nanny.nannyId}
+          userId={auth.currentUser ? auth.currentUser.uid : ""}
+        />
       ))}
       {visibleCards < favorites.length && (
         <Button
