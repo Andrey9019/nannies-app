@@ -30,6 +30,7 @@ Vite – для швидкої розробки.
 
 📸 Скриншоти
 Головна сторінка
-(/public/Nanny-Services-screen-favorite.jpeg)
+![Головна сторінка](./public/Nanny-Services-screen-favorite.jpeg)
+
 Профіль няні
-(/public/Nanny-Services-screen-home.jpeg)
+![Профіль няні](./public/Nanny-Services-screen-home.jpeg)
